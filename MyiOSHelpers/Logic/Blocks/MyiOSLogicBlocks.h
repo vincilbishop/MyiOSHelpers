@@ -10,3 +10,5 @@
 #define MyiOSLogicBlocks_h
 
 #endif
+
+typedef void (^MYCompletionBlock)(id sender, BOOL success, NSError *error, id result);

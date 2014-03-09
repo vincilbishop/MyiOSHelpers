@@ -10,3 +10,5 @@
 #define MyiOSCommonLogic_h
 
 #endif
+
+#import "Lumberjack-Default-Log-Level.h"
