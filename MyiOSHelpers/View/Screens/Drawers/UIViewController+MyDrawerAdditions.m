@@ -6,11 +6,11 @@
 //
 //
 
-#import "UIViewController+MyDrawerAdditions.h"
+#import "UIViewController+MYDrawerAdditions.h"
 #import "UIViewController+MMDrawerController.h"
-#import "MyDrawerViewController.h"
+#import "MYDrawerViewController.h"
 
-@implementation UIViewController (MyDrawerAdditions)
+@implementation UIViewController (MYDrawerAdditions)
 
 #pragma -- MMDrawer Helper Methods -
 

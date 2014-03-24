@@ -6,28 +6,28 @@
 //
 //
 
-#import "MyDrawerViewController.h"
+#import "MYDrawerViewController.h"
 
-@implementation MyDrawerViewController
+@implementation MYDrawerViewController
 
 #pragma mark - Static -
 
-static MyDrawerViewController *_sharedViewController;
+static MYDrawerViewController *_sharedViewController;
 
 static UIViewController *_leftDrawerViewController;
 static UIViewController *_centerViewController;
 static UIViewController *_rightDrawerViewController;
 
-+ (MyDrawerViewController*) sharedViewController
++ (MYDrawerViewController*) sharedViewController
 {
     if (!_sharedViewController) {
-        _sharedViewController = [MyDrawerViewController new];
+        _sharedViewController = [MYDrawerViewController new];
     }
     
     return _sharedViewController;
 }
 
-+ (void) setSharedViewController:(MyDrawerViewController*)sharedViewController
++ (void) setSharedViewController:(MYDrawerViewController*)sharedViewController
 {
     _sharedViewController = sharedViewController;
 }
@@ -65,7 +65,7 @@ static UIViewController *_rightDrawerViewController;
     
     if (self) {
         
-        [MyDrawerViewController setSharedViewController:self];
+        [MYDrawerViewController setSharedViewController:self];
     }
     
     return self;

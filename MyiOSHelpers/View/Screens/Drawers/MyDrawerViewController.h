@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+MyDrawerAdditions.h"
+#import "UIViewController+MYDrawerAdditions.h"
 #import "MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
 
-@interface MyDrawerViewController : MMDrawerController
+@interface MYDrawerViewController : MMDrawerController
 
 @property (nonatomic,strong) UIStoryboard *storyboard;
 
-+ (MyDrawerViewController*) sharedViewController;
-+ (void) setSharedViewController:(MyDrawerViewController*)sharedViewController;
++ (MYDrawerViewController*) sharedViewController;
++ (void) setSharedViewController:(MYDrawerViewController*)sharedViewController;
 
 + (void) setLeftDrawerViewController:(UIViewController*)viewController;
 + (void) setCenterViewController:(UIViewController*)viewController;

@@ -10,3 +10,6 @@
 #define MyiOSViewCategories_h
 
 #endif
+
+#import "UIView+HierarchyAdditions.h"
+#import "UIView+RemoveSubviews.h"

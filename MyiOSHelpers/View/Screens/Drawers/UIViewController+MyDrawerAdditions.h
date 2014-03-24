@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (MyDrawerAdditions)
+@interface UIViewController (MYDrawerAdditions)
 
 - (void) setupGestureRecognizers;
 - (void) setupLeftMenuButton;

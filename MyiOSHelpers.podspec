@@ -22,12 +22,59 @@ Pod::Spec.new do |spec|
 		# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
 		# subspec.ios.framework = 'AssetsLibrary'
 	
-		logic.subspec "Third-Party-Helpers" do |third_party|
+		logic.subspec "ThirdPartyHelpers" do |third_party|
 			# subspec.prefix_header_contents = '#import "HeaderFiles.h"'
-			third_party.source_files = 'MyiOSHelpers/Logic/Third-Party-Helpers/*.h'
+			third_party.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/*.h'
 			# subspec.ios.dependency ''
 			# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
 			# subspec.ios.framework = 'AssetsLibrary'
+			
+			third_party.subspec "CoreLocation" do |cl|
+				# subspec.prefix_header_contents = '#import "HeaderFiles.h"'
+				cl.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/CoreLocation/*.{h,m}'
+				cl.ios.framework = 'CoreLocation'
+				cl.ios.dependency 'MyiOSHelpers/Logic/Blocks'
+				cl.ios.dependency 'MyiOSHelpers/Logic/Categories'
+				cl.ios.dependency 'MyiOSHelpers/Logic/Common'
+				# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
+				# subspec.ios.framework = 'AssetsLibrary'
+			end
+			
+			third_party.subspec "CoreBluetooth" do |cb|
+				# subspec.prefix_header_contents = '#import "HeaderFiles.h"'
+				cb.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/CoreBluetooth/*.{h,m}'
+				cb.ios.framework = 'CoreBluetooth'
+				cb.ios.dependency 'MyiOSHelpers/Logic/Blocks'
+				cb.ios.dependency 'MyiOSHelpers/Logic/Categories'
+				cb.ios.dependency 'MyiOSHelpers/Logic/Common'
+				# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
+				# subspec.ios.framework = 'AssetsLibrary'
+			end
+			
+			third_party.subspec "MongoDB" do |mongo|
+				# subspec.prefix_header_contents = '#import "HeaderFiles.h"'
+				mongo.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Mongo/*.{h,m}'
+				mongo.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping'
+				
+				# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
+				# subspec.ios.framework = 'AssetsLibrary'
+			end # Logic/Blocks
+			
+			third_party.subspec "KeyValueObjectMapping" do |kvom|
+				# subspec.prefix_header_contents = '#import "HeaderFiles.h"'
+				kvom.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping/*.{h,m}'
+				kvom.ios.dependency 'DCKeyValueObjectMapping', '~>1.4.0'
+				# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
+				# subspec.ios.framework = 'AssetsLibrary'
+			end # Logic/Blocks
+			
+			third_party.subspec "Twilio" do |twilio|
+				twilio.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Twilio/*.{h,m}'
+				twilio.prefix_header_contents = '#import "TwilioClient.h"'
+				twilio.ios.dependency 'MyiOSHelpers/Logic/Common'
+				twilio.dependency 'TwilioSDK'
+			end
+			
 		end # Logic/Blocks
 	
 		logic.subspec "Blocks" do |blocks|
@@ -84,6 +131,23 @@ Pod::Spec.new do |spec|
 				# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
 				# subspec.ios.framework = 'AssetsLibrary'
 			end # View/Screens
+			
+			screens.subspec "FormViewController" do |form|
+				form.source_files = 'MyiOSHelpers/View/Screens/FormViewController/*.{h,m}'
+				form.ios.dependency 'RDVKeyboardAvoiding', '~>1.1.0'
+				form.ios.dependency 'US2FormValidator', '~> 1.1.2'
+				form.ios.dependency 'MyiOSHelpers/Logic/Blocks'
+				form.ios.dependency 'MyiOSHelpers/View/Categories'
+				# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
+				# subspec.ios.framework = 'AssetsLibrary'
+			end # View/Screens
+			
+			screens.subspec "LoginViewController" do |login|
+				login.source_files = 'MyiOSHelpers/View/Screens/LoginViewController/*.{h,m}'
+				login.ios.dependency 'MyiOSHelpers/View/Screens/FormViewController'
+				login.ios.dependency 'MBProgressHUD', '~>0.8'
+			end # View/Screens
+			
 		end # View/Screens
 
 		view.subspec "Categories" do |view_categories|

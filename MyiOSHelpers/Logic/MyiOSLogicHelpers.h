@@ -14,3 +14,4 @@
 #import "MyiOSCommonLogic.h"
 #import "MyiOSLogicBlocks.h"
 #import "MyiOSLogicCategories.h"
+#import "MyiOSThirdPartyHelpers.h"
