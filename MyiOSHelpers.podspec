@@ -95,7 +95,7 @@ Pod::Spec.new do |spec|
 	
 		logic.subspec "Common" do |common_logic|
 			common_logic.source_files = 'MyiOSHelpers/Logic/Common/*.{h,m}'
-			common_logic.ios.dependency 'CocoaLumberjack', '~>1.8.1'
+			
 			# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
 			# subspec.ios.framework = 'AssetsLibrary'
 			
@@ -104,6 +104,7 @@ Pod::Spec.new do |spec|
 				lumberjack_helpers.prefix_header_contents = 	'#import "Lumberjack-Default-Log-Level.h"', 
 																'#import "PrettyClassInformationLogFormatter.h"'
 				lumberjack_helpers.source_files = 'MyiOSHelpers/Logic/Common/LumberjackHelpers/*.{h,m}'
+				lumberjack_helpers.ios.dependency 'CocoaLumberjack', '~>1.8.1'
 			end
 		end # Logic/Common
 		
