@@ -10,9 +10,4 @@
 
 @implementation MYMongoModelObjectBase
 
-+ (DCKeyValueObjectMapping*) parser
-{
-    return [DCKeyValueObjectMapping mapperForClass:self];
-}
-
 @end

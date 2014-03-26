@@ -55,7 +55,7 @@ Pod::Spec.new do |spec|
 				# subspec.prefix_header_contents = '#import "HeaderFiles.h"'
 				mongo.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Mongo/*.{h,m}'
 				mongo.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping'
-				
+				mongo.ios.dependency 'NSObject-ObjectMap', '~> 2.2'
 				# subspec.ios.resource_bundle = { 'BundleName' => 'Path/To/Resources/**/*.*' }
 				# subspec.ios.framework = 'AssetsLibrary'
 			end # Logic/Blocks
