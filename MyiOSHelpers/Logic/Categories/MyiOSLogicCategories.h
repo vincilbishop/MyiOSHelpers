@@ -13,6 +13,6 @@
 
 #import "NSError+IOG_Additions.h"
 #import "NSDictionary+IOG_Merge.h"
-#import "NSOperationQueue+IOGDelayedOperation.h"
+#import "NSOperationQueue+MyAdditions.h"
 #import "NSNull+IOG_Additions.h"
 #import "UIApplication+IOG_Additions.h"

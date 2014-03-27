@@ -36,6 +36,17 @@ static MYPeripheralManager *_sharedManager;
 
 #pragma mark - Convenience Methods -
 
+- (void) startAdvertisingWithProximityUUID:(NSString*)proximityUUID
+                                   majorID:(short)majorID
+                                   minorID:(short)minorID
+                                identifier:(NSString*)identifier
+                                completion:(MYCompletionBlock)completionBlock
+{
+    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID major:majorID minor:minorID identifier:identifier];
+    
+    [self startAdvertisingWithRegion:beaconRegion completion:completionBlock];
+}
+
 - (void) startAdvertisingWithRegion:(CLBeaconRegion*)beaconRegion
                          completion:(MYCompletionBlock)completionBlock;
 {

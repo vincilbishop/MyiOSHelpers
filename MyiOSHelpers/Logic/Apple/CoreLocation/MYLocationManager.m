@@ -27,7 +27,9 @@ static MYLocationManager *_sharedManager;
     self = [super init];
     
     if (self) {
-        self.delegate = self;
+        
+        self.locationManager = [CLLocationManager new];
+        self.locationManager.delegate = self;
     }
     
     return self;
@@ -38,17 +40,22 @@ static MYLocationManager *_sharedManager;
 - (void) getLocationAndStopWithCompletion:(MYCompletionBlock)completionBlock
 {
     __block id observer = nil;
-    observer = [[NSNotificationCenter defaultCenter] addObserverForName:kMYLocationManager_DidUpdateLocations_Notification object:observer queue:[[NSOperationQueue alloc] init] usingBlock:^(NSNotification *note) {
-        
-        // TODO: Make a check for manager instance, date, sanity, etc.
-        completionBlock(self,YES,nil,self.location);
-        
-        [self stopMonitoringSignificantLocationChanges];
+    observer = [[NSNotificationCenter defaultCenter] addObserverForName:kMYLocationManager_DidUpdateLocations_Notification object:observer queue:[NSOperationQueue backgroundQueue] usingBlock:^(NSNotification *note) {
         
         [[NSNotificationCenter defaultCenter] removeObserver:observer];
+        
+        if (completionBlock) {
+            // TODO: Make a check for manager instance, date, sanity, etc.
+            completionBlock(self,YES,nil,self.lastLocation);
+
+        }
+        
+        [[NSOperationQueue backgroundQueue] addOperationWithBlock:^{
+            [self.locationManager stopMonitoringSignificantLocationChanges];
+        }];        
     }];
     
-    [self startMonitoringSignificantLocationChanges];
+    [self.locationManager startMonitoringSignificantLocationChanges];
 }
 
 #pragma mark - Beacon Convenience Methods -
@@ -58,10 +65,11 @@ static MYLocationManager *_sharedManager;
     __block BOOL found = NO;
     
     __block id observer = nil;
-    observer = [[NSNotificationCenter defaultCenter] addObserverForName:kMYLocationManager_DidRangeBeaconsInRegion_Notification object:observer queue:[[NSOperationQueue alloc] init] usingBlock:^(NSNotification *note) {
+    observer = [[NSNotificationCenter defaultCenter] addObserverForName:kMYLocationManager_DidRangeBeaconsInRegion_Notification object:observer queue:[NSOperationQueue backgroundQueue]  usingBlock:^(NSNotification *note) {
         
-        [[NSNotificationCenter defaultCenter] removeObserver:observer];
-        [self stopRangingBeaconsInRegion:region];
+        [[NSOperationQueue backgroundQueue] addOperationWithBlock:^{
+            [self.locationManager stopRangingBeaconsInRegion:region];
+        }];
         
         found = YES;
         
@@ -70,22 +78,24 @@ static MYLocationManager *_sharedManager;
         if (completionBlock) {
             completionBlock(self,YES,nil,self.beacons);
         }
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
     }];
     
-    [self startRangingBeaconsInRegion:region];
+    [self.locationManager startRangingBeaconsInRegion:region];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         if (!found) {
             [[NSNotificationCenter defaultCenter] removeObserver:observer];
             
-            [self stopRangingBeaconsInRegion:region];
+            [self.locationManager stopRangingBeaconsInRegion:region];
             
             if (completionBlock) {
                 completionBlock(self,NO,nil,nil);
             }
         }
 
-    } afterDelay:3.0];
+    } afterDelay:30.0];
 }
 
 #pragma mark - Location Information -
@@ -98,6 +108,8 @@ static MYLocationManager *_sharedManager;
     // +37.78735890,-122.40822700
     if (self.mockLocation) {
         return self.mockLocation;
+    } else if ([self.locations lastObject]) {
+        return [self.locations lastObject];
     } else {
         return [self.locations lastObject];
     }
@@ -126,7 +138,7 @@ static MYLocationManager *_sharedManager;
     [[NSNotificationCenter defaultCenter] postNotificationName:kMYLocationManager_DidRangeBeaconsInRegion_Notification object:self userInfo:@{@"locationManager":manager,@"beacons":beacons,@"region":region}];
     
     // TODO: add a flag here so that when starting location updates, one can choose whether to only update location once, or continually monitor locations as the user moves....
-    [manager stopRangingBeaconsInRegion:region];
+    //[manager stopRangingBeaconsInRegion:region];
 }
 
 #pragma mark - CLLocationManagerDelegate Locations -

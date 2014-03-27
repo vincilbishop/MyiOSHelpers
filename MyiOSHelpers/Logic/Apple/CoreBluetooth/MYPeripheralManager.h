@@ -19,6 +19,12 @@
 
 + (MYPeripheralManager*) sharedManager;
 
+- (void) startAdvertisingWithProximityUUID:(NSString*)proximityUUID
+                                   majorID:(short)majorID
+                                   minorID:(short)minorID
+                                identifier:(NSString*)identifier
+                                completion:(MYCompletionBlock)completionBlock;
+
 - (void) startAdvertisingWithRegion:(CLBeaconRegion*)beaconRegion completion:(MYCompletionBlock)completionBlock;
 
 @end

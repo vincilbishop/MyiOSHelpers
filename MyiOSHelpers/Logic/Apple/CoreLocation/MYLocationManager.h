@@ -14,12 +14,16 @@
 
 #define kMYLocationManager_DidRangeBeaconsInRegion_Notification @"kMYLocationManager_DidRangeBeaconsInRegion_Notification"
 
-@interface MYLocationManager : CLLocationManager<CLLocationManagerDelegate>
+//#define kMYLocationManager_LastLocation_Key @"kMYLocationManager_LastLocation_Key"
+
+@interface MYLocationManager : NSObject<CLLocationManagerDelegate>
 
 @property (nonatomic,strong) NSArray *locations;
 @property (nonatomic,strong) NSDictionary *beacons;
 
 @property (nonatomic,strong) CLLocation *mockLocation;
+@property (nonatomic,strong) CLLocationManager *locationManager;
+
 
 - (CLLocation*) lastLocation;
 

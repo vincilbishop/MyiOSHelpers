@@ -1,14 +1,23 @@
 //
-//  NSOperationQueue+IOGDelayedOperation.m
+//  NSOperationQueue+MyAdditions.m
 //  Pods
 //
 //  Created by Vincil Bishop on 2/11/14.
 //
 //
 
-#import "NSOperationQueue+IOGDelayedOperation.h"
+#import "NSOperationQueue+MyAdditions.h"
 
-@implementation NSOperationQueue (IOGDelayedOperation)
+@implementation NSOperationQueue (MyAdditions)
+
++ (NSOperationQueue*) backgroundQueue
+{
+    if (!_myBackgroundOperationQueue) {
+        _myBackgroundOperationQueue = [NSOperationQueue new];
+    }
+    
+    return _myBackgroundOperationQueue;
+}
 
 - (void) addOperationWithBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay
 {

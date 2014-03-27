@@ -11,8 +11,6 @@
 
 #endif
 
-#import "MYLocationManager.h"
 #import "MYModelObjectBase.h"
 #import "MYMongoModelObjectBase.h"
-#import "MYPeripheralManager.h"
 #import "MYTwilioClient.h"
