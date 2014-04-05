@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     
 	spec.name		= 'MyiOSHelpers'
-	spec.version	= '0.0.1'
+	spec.version	= '0.0.2'
 	spec.homepage   = "http://github.com/premosystems/MyiOSHelpers"
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
@@ -86,6 +86,7 @@ Pod::Spec.new do |spec|
 		
 		view.subspec "Screens" do |screens|
 			screens.source_files = 'MyiOSHelpers/View/Screens/*.{h,m}'
+            
 			screens.subspec "Drawers" do |drawers|
 				drawers.prefix_header_contents = 	'#import "MMDrawerController.h"',
                 '#import "MMDrawerBarButtonItem.h"',
@@ -106,7 +107,18 @@ Pod::Spec.new do |spec|
 				login.source_files = 'MyiOSHelpers/View/Screens/LoginViewController/*.{h,m}'
 				login.ios.dependency 'MyiOSHelpers/View/Screens/FormViewController'
 				login.ios.dependency 'MBProgressHUD', '~>0.8'
-			end
+            end
+            
+            screens.subspec "TableViewControllerBase" do |table|
+				table.source_files = 'MyiOSHelpers/View/Screens/TableViewControllerBase/*.{h,m}'
+            end
+            
+            screens.subspec "ModelObjectTableViewControllerBase" do |modeltable|
+                modeltable.ios.dependency 'MyiOSHelpers/View/Screens/TableViewControllerBase'
+                modeltable.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping'
+				modeltable.source_files = 'MyiOSHelpers/View/Screens/ModelObjectTableViewControllerBase/*.{h,m}'
+            end
+            
 		end
         
 		view.subspec "Categories" do |view_categories|

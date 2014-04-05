@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "DCKeyValueObjectMapping.h"
+#import "MYParseableModelObject.h"
 
-@interface MYModelObjectBase : NSObject
+@interface MYModelObjectBase : NSObject<MYParseableModelObject>
 
 + (DCKeyValueObjectMapping*) parser;
 

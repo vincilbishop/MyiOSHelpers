@@ -14,3 +14,5 @@
 #import "MYDrawerViewController.h"
 #import "MYFormViewControllerBase.h"
 #import "MYLoginViewControllerBase.h"
+#import "MYTableViewControllerBase.h"
+#import "MYModelObjectTableViewControllerBase.h"
