@@ -12,6 +12,7 @@
 #endif
 
 #import "NSError+IOG_Additions.h"
+#import "NSData+MyAdditions.h"
 #import "NSDictionary+IOG_Merge.h"
 #import "NSOperationQueue+MyAdditions.h"
 #import "NSNull+IOG_Additions.h"
