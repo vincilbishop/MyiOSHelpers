@@ -10,8 +10,8 @@
 // --> per https://github.com/robbiehanson/CocoaLumberjack/wiki/CustomLogLevels
 // ----------------------------------------------------------------------------
 
-// Are we in an optimized (i.e. Release) build?
-#ifndef __OPTIMIZE__
+// Are we in a DEBUG build? If so, let's make logging synchronous
+#ifdef DEBUG
     // NO: We're in a Debug build. As such, let's configure logging to flush right away.
     // Undefine the asynchronous defaults:
     #undef LOG_ASYNC_VERBOSE

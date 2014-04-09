@@ -69,12 +69,6 @@ Pod::Spec.new do |spec|
 				lumberjack.ios.dependency 'CocoaLumberjack', '~>1.8.1'
 			end
             
-            third_party.subspec "TestFlightSDK" do |testflight|
-                testflight.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/TestFlightSDK/*.{h,m}'
-                testflight.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
-                testflight.ios.dependency 'TestFlightSDK', '~>3.0.0'
-            end
-            
 			third_party.subspec "Twilio" do |twilio|
 				twilio.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Twilio/*.{h,m}'
 				twilio.prefix_header_contents = '#import "TwilioClient.h"'
