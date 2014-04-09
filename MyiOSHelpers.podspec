@@ -20,13 +20,13 @@ Pod::Spec.new do |spec|
      	
         logic.subspec "Apple" do |apple|
 			apple.source_files = 'MyiOSHelpers/Logic/Apple/*.h'
+            
 			apple.subspec "CoreLocation" do |cl|
-				
 				cl.source_files = 'MyiOSHelpers/Logic/Apple/CoreLocation/*.{h,m}'
 				cl.ios.framework = 'CoreLocation'
 				cl.ios.dependency 'MyiOSHelpers/Logic/Blocks'
 				cl.ios.dependency 'MyiOSHelpers/Logic/Categories'
-				cl.ios.dependency 'MyiOSHelpers/Logic/Common'
+				cl.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
 			end
 			
 			apple.subspec "CoreBluetooth" do |cb|
@@ -34,7 +34,7 @@ Pod::Spec.new do |spec|
 				cb.ios.framework = 'CoreBluetooth'
 				cb.ios.dependency 'MyiOSHelpers/Logic/Blocks'
 				cb.ios.dependency 'MyiOSHelpers/Logic/Categories'
-				cb.ios.dependency 'MyiOSHelpers/Logic/Common'
+				cb.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
 			end
         end
         
@@ -45,17 +45,6 @@ Pod::Spec.new do |spec|
 		logic.subspec "Categories" do |logic_categories|
 			logic_categories.source_files = 'MyiOSHelpers/Logic/Categories/*.{h,m}'
             logic_categories.dependency 'ObjcAssociatedObjectHelpers', '~>1.2.0'
-		end
-		
-		logic.subspec "Common" do |common_logic|
-			common_logic.source_files = 'MyiOSHelpers/Logic/Common/*.{h,m}'
-			common_logic.subspec "LumberjackHelpers" do |lumberjack_helpers|
-				lumberjack_helpers.ios.dependency 'LumberjackPrettyClassInformation', '~>1.0.0'
-				lumberjack_helpers.prefix_header_contents = 	'#import "Lumberjack-Default-Log-Level.h"',
-                '#import "PrettyClassInformationLogFormatter.h"'
-				lumberjack_helpers.source_files = 'MyiOSHelpers/Logic/Common/LumberjackHelpers/*.{h,m}'
-				lumberjack_helpers.ios.dependency 'CocoaLumberjack', '~>1.8.1'
-			end
 		end
         
         logic.subspec "ThirdPartyHelpers" do |third_party|
@@ -70,12 +59,26 @@ Pod::Spec.new do |spec|
 			third_party.subspec "KeyValueObjectMapping" do |kvom|
 				kvom.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping/*.{h,m}'
 				kvom.ios.dependency 'DCKeyValueObjectMapping', '~>1.4.0'
+            end
+            
+            third_party.subspec "CocoaLumberjack" do |lumberjack|
+				lumberjack.ios.dependency 'LumberjackPrettyClassInformation', '~>1.0.0'
+				lumberjack.prefix_header_contents = 	'#import "Lumberjack-Default-Log-Level.h"',
+                '#import "PrettyClassInformationLogFormatter.h"'
+				lumberjack.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack/*.{h,m}'
+				lumberjack.ios.dependency 'CocoaLumberjack', '~>1.8.1'
 			end
-			
+            
+            third_party.subspec "TestFlightSDK" do |testflight|
+                testflight.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/TestFlightSDK/*.{h,m}'
+                testflight.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
+                testflight.ios.dependency 'TestFlightSDK', '~>3.0.0'
+            end
+            
 			third_party.subspec "Twilio" do |twilio|
 				twilio.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Twilio/*.{h,m}'
 				twilio.prefix_header_contents = '#import "TwilioClient.h"'
-				twilio.ios.dependency 'MyiOSHelpers/Logic/Common'
+				twilio.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
 				twilio.dependency 'TwilioSDK'
 			end
 		end
