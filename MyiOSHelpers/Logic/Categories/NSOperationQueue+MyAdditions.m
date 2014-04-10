@@ -10,6 +10,8 @@
 
 @implementation NSOperationQueue (MyAdditions)
 
+static NSOperationQueue *_myBackgroundOperationQueue;
+
 + (NSOperationQueue*) backgroundQueue
 {
     if (!_myBackgroundOperationQueue) {

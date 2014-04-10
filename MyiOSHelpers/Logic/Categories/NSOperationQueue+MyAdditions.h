@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-static NSOperationQueue *_myBackgroundOperationQueue;
-
 @interface NSOperationQueue (MyAdditions)
 
 + (NSOperationQueue*) backgroundQueue;
