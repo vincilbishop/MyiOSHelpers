@@ -1,14 +1,14 @@
 //
-//  UIApplication+IOG_Additions.m
+//  UIApplication+MyAdditions.m
 //  Pods
 //
 //  Created by Vincil Bishop on 2/19/14.
 //
 //
 
-#import "UIApplication+IOG_Additions.h"
+#import "UIApplication+MyAdditions.h"
 
-@implementation UIApplication (IOG_Additions)
+@implementation UIApplication (MyAdditions)
 
 - (UIViewController*) presentedViewController
 {

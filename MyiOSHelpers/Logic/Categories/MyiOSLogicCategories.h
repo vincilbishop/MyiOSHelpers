@@ -11,10 +11,30 @@
 
 #endif
 
-#import "NSError+MyAdditions.h"
+// NSData
 #import "NSData+MyAdditions.h"
-#import "NSDictionary+IOG_Merge.h"
+
+// NSDate
+#import "NSDate+MyAdditions.h"
+
+// NSDictionary
+#import "NSDictionary+MyAdditions_Merge.h"
+#import "NSDictionary+MyAdditions_ObjToDictionary.h"
+
+// NSError
+#import "NSError+MyAdditions.h"
+
+// NSObject
+#import "NSObject+MyAdditions_ToDictionary.h"
+
+// NSOperationQueue
 #import "NSOperationQueue+MyAdditions.h"
-#import "NSNull+IOG_Additions.h"
-#import "UIApplication+IOG_Additions.h"
+
+// NSNull
+#import "NSNull+MyAdditions.h"
+
+// UIApplicatino
+#import "UIApplication+MyAdditions.h"
+
+// UIDevice
 #import "UIDevice+MyAdditions.h"

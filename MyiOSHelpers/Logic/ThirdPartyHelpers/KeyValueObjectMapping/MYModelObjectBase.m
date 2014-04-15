@@ -15,4 +15,6 @@
     return [DCKeyValueObjectMapping mapperForClass:self];
 }
 
+
+
 @end

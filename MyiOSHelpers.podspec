@@ -44,7 +44,21 @@ Pod::Spec.new do |spec|
         
 		logic.subspec "Categories" do |logic_categories|
 			logic_categories.source_files = 'MyiOSHelpers/Logic/Categories/*.{h,m}'
-            logic_categories.dependency 'ObjcAssociatedObjectHelpers', '~>1.2.0'
+            # logic_categories.dependency 'ObjcAssociatedObjectHelpers', '~>1.2.0'
+            logic_categories.dependency 'NSDate+Helper', '~>0.0.1'
+            
+            categoriesArray = ["NSData","NSDate","NSDictionary","NSError","NSNull","NSOperationQueue","UIApplication","UIDevice"]
+            
+            for category in categoriesArray
+                logic_categories.subspec category do |cat|
+                    cat.source_files = "MyiOSHelpers/Logic/Categories/#{category}/*.{h,m}"
+                end
+            end
+            
+            logic_categories.subspec "NSObject" do |nsobject|
+                nsobject.source_files = "MyiOSHelpers/Logic/Categories/NSObject/*.{h,m}"
+                nsobject.dependency 'MyiOSHelpers/Logic/Categories/NSDictionary'
+            end
 		end
         
         logic.subspec "ThirdPartyHelpers" do |third_party|
@@ -59,6 +73,7 @@ Pod::Spec.new do |spec|
 			third_party.subspec "KeyValueObjectMapping" do |kvom|
 				kvom.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping/*.{h,m}'
 				kvom.ios.dependency 'DCKeyValueObjectMapping', '~>1.4.0'
+                kvom.ios.dependency 'NSObject-ObjectMap', '~> 2.1'
             end
             
             third_party.subspec "CocoaLumberjack" do |lumberjack|
@@ -90,6 +105,12 @@ Pod::Spec.new do |spec|
                 '#import "UIViewController+MMDrawerController.h"'
 				drawers.source_files = 'MyiOSHelpers/View/Screens/Drawers/*.{h,m}'
 				drawers.ios.dependency 'MMDrawerController', '~> 0.5.2'
+			end
+            
+            screens.subspec "ImagePicker" do |imagePicker|
+				imagePicker.source_files = 'MyiOSHelpers/View/Screens/ImagePicker/*.{h,m}'
+                imagePicker.ios.dependency 'UIActionSheet+Blocks'
+                imagePicker.ios.dependency 'MyiOSHelpers/Logic/Categories'
 			end
 			
 			screens.subspec "FormViewController" do |form|

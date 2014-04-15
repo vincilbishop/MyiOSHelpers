@@ -12,6 +12,7 @@
 #endif
 
 #import "MYDrawerViewController.h"
+#import "MYImagePickerController.h"
 #import "MYFormViewControllerBase.h"
 #import "MYLoginViewControllerBase.h"
 #import "MYTableViewControllerBase.h"

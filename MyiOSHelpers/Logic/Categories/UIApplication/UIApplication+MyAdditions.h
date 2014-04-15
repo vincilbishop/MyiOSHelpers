@@ -1,5 +1,5 @@
 //
-//  UIApplication+IOG_Additions.h
+//  UIApplication+MyAdditions.h
 //  Pods
 //
 //  Created by Vincil Bishop on 2/19/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIApplication (IOG_Additions)
+@interface UIApplication (MyAdditions)
 
 - (UIViewController*) presentedViewController;
 

@@ -1,5 +1,5 @@
 //
-//  UIImageView+IOG_Additions.h
+//  UIImageView+MyAdditions.h
 //  Pods
 //
 //  Created by Vincil Bishop on 2/20/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImageView (IOG_Additions)
+@interface UIImageView (MyAdditions)
 
 - (void) showPlaceholderImage;
 + (UIImage*) placeholderImage;

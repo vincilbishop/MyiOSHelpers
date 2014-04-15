@@ -1,14 +1,14 @@
 //
-//  UIImageView+IOG_Additions.m
+//  UIImageView+MyAdditions.m
 //  Pods
 //
 //  Created by Vincil Bishop on 2/20/14.
 //
 //
 
-#import "UIImageView+IOG_Additions.h"
+#import "UIImageView+MyAdditions.h"
 
-@implementation UIImageView (IOG_Additions)
+@implementation UIImageView (MyAdditions)
 
 - (void) showPlaceholderImage
 {

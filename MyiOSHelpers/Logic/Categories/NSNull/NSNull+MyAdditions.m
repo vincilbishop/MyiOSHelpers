@@ -1,14 +1,14 @@
 //
-//  NSNull+IOG_Additions.m
+//  NSNull+MyAdditions.m
 //  Pods
 //
 //  Created by Vincil Bishop on 2/18/14.
 //
 //
 
-#import "NSNull+IOG_Additions.h"
+#import "NSNull+MyAdditions.h"
 
-@implementation NSNull (IOG_Additions)
+@implementation NSNull (MyAdditions)
 
 + (id) objectOrNull:(id)object
 {
