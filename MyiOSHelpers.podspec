@@ -141,6 +141,19 @@ Pod::Spec.new do |spec|
         
 		view.subspec "Categories" do |view_categories|
 			view_categories.source_files = 'MyiOSHelpers/View/Categories/*.{h,m}'
+            
+            categoriesArray = ["UIView"]
+            
+            for category in categoriesArray
+                view_categories.subspec category do |cat|
+                    cat.source_files = "MyiOSHelpers/View/Categories/#{category}/*.{h,m}"
+                end
+            end
+            
+            view_categories.subspec "UIImageView" do |uiimageview|
+                uiimageview.source_files = "MyiOSHelpers/View/Categories/UIImageView/*.{h,m}"
+                uiimageview.resource = 'MyiOSHelpers/View/Categories/UIImageView/*.png'
+            end
 		end
 	end
 end

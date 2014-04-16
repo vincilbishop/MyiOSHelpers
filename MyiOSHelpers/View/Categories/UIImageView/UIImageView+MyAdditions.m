@@ -17,7 +17,7 @@
 
 + (UIImage*) placeholderImage
 {
-    return [UIImage imageNamed:@"IOGPlaceholderImage.png"];;
+    return [UIImage imageNamed:@"MyPlaceholderImage.png"];;
 }
 
 @end
