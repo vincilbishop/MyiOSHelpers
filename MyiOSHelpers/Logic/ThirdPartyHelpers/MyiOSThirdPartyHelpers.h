@@ -12,6 +12,7 @@
 #endif
 
 #import "Lumberjack-Default-Log-Level.h"
+#import "MyAWSHelpers.h"
 #import "MYModelObjectBase.h"
 #import "MYMongoModelObjectBase.h"
 #import "MYTwilioClient.h"

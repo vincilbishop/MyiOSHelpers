@@ -64,6 +64,16 @@ Pod::Spec.new do |spec|
         logic.subspec "ThirdPartyHelpers" do |third_party|
 			third_party.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/*.h'
             
+            third_party.subspec "AWS" do |aws|
+                aws.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/AWS/*.{h,m}'
+                aws.subspec "S3" do |s3|
+                    s3.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/AWS/S3/*.{h,m}'
+                    s3.ios.dependency 'AWSiOSSDK/S3', '~>1.7.1'
+                    s3.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
+                    s3.ios.dependency 'MyiOSHelpers/Logic/Blocks'
+                end
+            end
+            
 			third_party.subspec "MongoDB" do |mongo|
 				mongo.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Mongo/*.{h,m}'
 				mongo.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping'
@@ -138,6 +148,15 @@ Pod::Spec.new do |spec|
             end
             
 		end
+        
+        view.subspec "ThirdPartyHelpers" do |third_party|
+			third_party.source_files = 'MyiOSHelpers/View/ThirdPartyHelpers/*.h'
+            
+            third_party.subspec "MBProgressHUD" do |hud|
+                hud.source_files = 'MyiOSHelpers/View/ThirdPartyHelpers/MBProgressHUD/*.{h,m}'
+                hud.ios.dependency 'MBProgressHUD', '~>0.8'
+            end
+        end
         
 		view.subspec "Categories" do |view_categories|
 			view_categories.source_files = 'MyiOSHelpers/View/Categories/*.{h,m}'

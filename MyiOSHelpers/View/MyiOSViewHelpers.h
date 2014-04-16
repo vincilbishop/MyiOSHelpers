@@ -11,5 +11,6 @@
 
 #endif
 
+#import "MyiOSThirdPartyViewHelpers.h"
 #import "MyiOSViewCategories.h"
 #import "MyiOSViewScreens.h"

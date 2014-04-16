@@ -10,4 +10,6 @@
 
 @interface UIView (MyRoundCorners)
 
+- (void) setRoundCorners;
+
 @end
