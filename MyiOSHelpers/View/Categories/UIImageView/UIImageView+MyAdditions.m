@@ -7,17 +7,16 @@
 //
 
 #import "UIImageView+MyAdditions.h"
+#import "UIImage+MyPlaceholderAdditions.h"
 
 @implementation UIImageView (MyAdditions)
 
 - (void) showPlaceholderImage
 {
-    self.image = [UIImageView placeholderImage];
+    self.image = [UIImage placeholderImage];
 }
 
-+ (UIImage*) placeholderImage
-{
-    return [UIImage imageNamed:@"MyPlaceholderImage.png"];;
-}
+
+
 
 @end

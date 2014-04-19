@@ -10,6 +10,11 @@
 
 @implementation UIView (MyMBProgressHUD_Additions)
 
+- (void) showProgressHUD
+{
+    [self showProgressHUDWithMessage:@"Loading..."];
+}
+
 - (void) showProgressHUDWithMessage:(NSString*)message
 {
     [self showProgressHUDWithMessage:message type:MBProgressHUDModeIndeterminate];

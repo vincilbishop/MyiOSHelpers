@@ -11,6 +11,7 @@
 
 @interface UIView (MyMBProgressHUD_Additions)
 
+- (void) showProgressHUD;
 - (void) showProgressHUDWithMessage:(NSString*)message;
 - (void) showProgressHUDWithMessage:(NSString*)message type:(MBProgressHUDMode)mode;
 - (void) hideProgressHUD;

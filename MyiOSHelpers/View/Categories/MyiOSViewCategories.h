@@ -11,6 +11,7 @@
 
 #endif
 
+#import "UIImage+MyPlaceholderAdditions.h"
 #import "UIView+HierarchyAdditions.h"
 #import "UIView+RemoveSubviews.h"
 #import "UIView+MyRoundCorners.h"

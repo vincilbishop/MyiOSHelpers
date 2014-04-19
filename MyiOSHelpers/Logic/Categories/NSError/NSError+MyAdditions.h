@@ -11,5 +11,6 @@
 @interface NSError (MyAdditions)
 
 + (NSError*) genericError;
++ (NSError*) genericErrorWithLocalizedDescription:(NSString*)localizedDescription;
 
 @end

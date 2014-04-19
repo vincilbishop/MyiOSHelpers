@@ -11,6 +11,5 @@
 @interface UIImageView (MyAdditions)
 
 - (void) showPlaceholderImage;
-+ (UIImage*) placeholderImage;
 
 @end

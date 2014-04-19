@@ -47,7 +47,7 @@ Pod::Spec.new do |spec|
             # logic_categories.dependency 'ObjcAssociatedObjectHelpers', '~>1.2.0'
             logic_categories.dependency 'NSDate+Helper', '~>0.0.1'
             
-            categoriesArray = ["NSData","NSDate","NSDictionary","NSError","NSNull","NSOperationQueue","UIApplication","UIDevice"]
+            categoriesArray = ["NSData","NSDate","NSDictionary","NSError","NSNull","NSOperationQueue","NSRunLoop","NSString","UIApplication","UIDevice"]
             
             for category in categoriesArray
                 logic_categories.subspec category do |cat|
@@ -91,7 +91,7 @@ Pod::Spec.new do |spec|
 				lumberjack.prefix_header_contents = 	'#import "Lumberjack-Default-Log-Level.h"',
                 '#import "PrettyClassInformationLogFormatter.h"'
 				lumberjack.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack/*.{h,m}'
-				lumberjack.ios.dependency 'CocoaLumberjack', '~>1.8.1'
+				lumberjack.ios.dependency 'CocoaLumberjack' # , '~>1.8.1'
 			end
             
 			third_party.subspec "Twilio" do |twilio|
@@ -171,7 +171,13 @@ Pod::Spec.new do |spec|
             
             view_categories.subspec "UIImageView" do |uiimageview|
                 uiimageview.source_files = "MyiOSHelpers/View/Categories/UIImageView/*.{h,m}"
-                uiimageview.resource = 'MyiOSHelpers/View/Categories/UIImageView/*.png'
+                uiimageview.ios.dependency 'MyiOSHelpers/View/Categories/UIImage'
+            end
+            
+            view_categories.subspec "UIImage" do |uiimage|
+                uiimage.source_files = "MyiOSHelpers/View/Categories/UIImage/*.{h,m}"
+                uiimage.resource = 'MyiOSHelpers/View/Categories/UIImage/*.png'
+
             end
 		end
 	end

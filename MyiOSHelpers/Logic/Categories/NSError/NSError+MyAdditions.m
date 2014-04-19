@@ -12,7 +12,12 @@
 
 + (NSError*) genericError
 {
-    NSError *error = [[NSError alloc] initWithDomain:@"Failure" code:500 userInfo:@{NSLocalizedDescriptionKey:[NSThread callStackSymbols]}];
+    return [self genericErrorWithLocalizedDescription:[NSThread callStackSymbols]];
+}
+
++ (NSError*) genericErrorWithLocalizedDescription:(NSString*)localizedDescription
+{
+    NSError *error = [[NSError alloc] initWithDomain:@"Failure" code:500 userInfo:@{NSLocalizedDescriptionKey:localizedDescription}];
     
     return error;
 }
