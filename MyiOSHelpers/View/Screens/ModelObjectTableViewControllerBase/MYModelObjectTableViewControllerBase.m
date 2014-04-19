@@ -16,6 +16,11 @@
 
 @implementation MYModelObjectTableViewControllerBase
 
+- (NSArray*) modelObjects
+{
+    return [[self.modelClass parser] parseArray:self.objects];
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withObject:(NSDictionary*)object
 {
     id<MYParseableModelObject> modelObject = [[self.modelClass parser] parseDictionary:object];
