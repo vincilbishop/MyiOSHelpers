@@ -98,7 +98,7 @@ Pod::Spec.new do |spec|
 				twilio.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Twilio/*.{h,m}'
 				twilio.prefix_header_contents = '#import "TwilioClient.h"'
 				twilio.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
-				twilio.dependency 'TwilioSDK', '1.1.3'
+				twilio.dependency 'TwilioSDK'
 			end
 		end
 	end
