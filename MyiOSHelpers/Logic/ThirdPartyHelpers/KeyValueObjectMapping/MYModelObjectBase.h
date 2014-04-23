@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DCKeyValueObjectMapping.h"
 #import "MYParseableModelObject.h"
+
+#import "DCArrayMapping.h"
+#import "DCKeyValueObjectMapping.h"
+#import "DCParserConfiguration.h"
 
 @interface MYModelObjectBase : NSObject<MYParseableModelObject>
 
