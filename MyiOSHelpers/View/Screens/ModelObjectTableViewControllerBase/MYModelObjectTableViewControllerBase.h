@@ -17,6 +17,8 @@
 
 - (NSArray*) modelObjects;
 
+- (void) reloadWithDictionaries:(NSArray*)objectDictionaries;
+
 - (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withModelObject:(MYModelObjectBase*)object;
 
 @end

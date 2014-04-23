@@ -46,7 +46,9 @@
 - (void) reloadWithArray:(NSArray*)objects
 {
     self.objects = objects;
-    [self.tableView reloadData];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.tableView reloadData];
+    }];
 }
 
 #pragma mark - Table view data source

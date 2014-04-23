@@ -15,6 +15,7 @@
 
 @interface MYModelObjectBase : NSObject<MYParseableModelObject>
 
++ (DCParserConfiguration*) configuration;
 + (DCKeyValueObjectMapping*) parser;
 
 @end

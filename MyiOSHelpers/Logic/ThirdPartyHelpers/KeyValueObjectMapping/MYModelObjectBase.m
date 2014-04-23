@@ -10,11 +10,14 @@
 
 @implementation MYModelObjectBase
 
-+ (DCKeyValueObjectMapping*) parser
++ (DCParserConfiguration*) configuration
 {
-    return [DCKeyValueObjectMapping mapperForClass:self];
+    return [DCParserConfiguration new];
 }
 
-
++ (DCKeyValueObjectMapping*) parser
+{
+    return [DCKeyValueObjectMapping mapperForClass:self andConfiguration:[self configuration]];
+}
 
 @end

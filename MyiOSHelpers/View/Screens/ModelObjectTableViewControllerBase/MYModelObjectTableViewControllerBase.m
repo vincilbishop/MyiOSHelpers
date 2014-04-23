@@ -23,9 +23,9 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withObject:(NSDictionary*)object
 {
-    id<MYParseableModelObject> modelObject = [[self.modelClass parser] parseDictionary:object];
+    //id<MYParseableModelObject> modelObject = [[self.modelClass parser] parseDictionary:object];
     
-    return [self tableView:tableView configureCell:cell withModelObject:modelObject];
+    return [self tableView:tableView configureCell:cell withModelObject:object];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withModelObject:(MYModelObjectBase*)object
@@ -36,5 +36,10 @@
     return modelCell;
 }
 
+- (void) reloadWithDictionaries:(NSArray*)objectDictionaries
+{
+    NSArray *strongObjects = [[self.modelClass parser] parseArray:objectDictionaries];
+    [super reloadWithArray:strongObjects];
+}
 
 @end
