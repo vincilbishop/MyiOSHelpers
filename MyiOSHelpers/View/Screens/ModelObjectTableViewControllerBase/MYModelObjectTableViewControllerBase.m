@@ -31,7 +31,7 @@
 - (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withModelObject:(MYModelObjectBase*)object
 {
     MYModelObjectTableViewCellBase *modelCell = (MYModelObjectTableViewCellBase*)cell;
-    [modelCell configureCellWithModelObject:object];
+    [modelCell configureWithModelObject:object];
     
     return modelCell;
 }

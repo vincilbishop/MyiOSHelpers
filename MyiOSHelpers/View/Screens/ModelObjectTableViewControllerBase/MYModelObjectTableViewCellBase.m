@@ -11,7 +11,7 @@
 
 @implementation MYModelObjectTableViewCellBase
 
-- (void) configureCellWithModelObject:(MYModelObjectBase*)modelObject
+- (void) configureWithModelObject:(MYModelObjectBase*)modelObject
 {
     self.modelObject = modelObject;
 }

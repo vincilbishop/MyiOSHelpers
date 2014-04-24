@@ -14,6 +14,6 @@
 
 @property (nonatomic,strong) MYModelObjectBase *modelObject;
 
-- (void) configureCellWithModelObject:(MYModelObjectBase*)modelObject;
+- (void) configureWithModelObject:(MYModelObjectBase*)modelObject;
 
 @end
