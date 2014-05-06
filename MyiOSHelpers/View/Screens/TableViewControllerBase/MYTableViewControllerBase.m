@@ -19,7 +19,8 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
-        _reuseIdentifier = @"Cell";
+        //_reuseIdentifier = @"Cell";
+        self.objects = [NSMutableArray new];
     }
     return self;
 }
@@ -45,24 +46,64 @@
 
 - (void) reloadWithArray:(NSArray*)objects
 {
-    self.objects = objects;
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self.tableView reloadData];
-    }];
+    [self reloadSection:0 withArray:objects];
+}
+
+- (void) reloadSection:(NSUInteger)section withArray:(NSArray*)objects
+{
+    if (self.objects && objects) {
+        
+        DDLogVerbose(@"self.objects.count = %i / section = %i",self.objects.count,section);
+        
+        if (self.objects.count > 0 && self.objects.count > section) {
+            [self.objects replaceObjectAtIndex:section withObject:objects];
+        } else {
+            [self.objects addObject:objects];
+        }        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.tableView reloadData];
+        }];
+    }
+}
+
+- (id) objectForIndexPath:(NSIndexPath*)indexPath
+{
+    NSArray *sectionArray = [self arrayForSection:indexPath.section];
+    
+    if (sectionArray && sectionArray.count > indexPath.row) {
+    
+        return sectionArray[indexPath.row];
+    
+    } else {
+    
+        return nil;
+    }
+}
+
+- (NSArray*) arrayForSection:(NSUInteger)section
+{
+    if (self.objects.count > section) {
+        NSArray *sectionArray = self.objects[section];
+        
+        return sectionArray;
+    } else {
+        return nil;
+    }
+    
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.objects.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.objects) {
+    if ([self arrayForSection:section] && self.objects.count >= 1) {
     
-        return  self.objects.count;
+        return  [self arrayForSection:section].count;
     
     } else {
         
@@ -72,74 +113,39 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier forIndexPath:indexPath];
+    id object = [self objectForIndexPath:indexPath];
+    
+    NSString *cellIdentifier = [self cellIdentifierForRowAtIndexPath:indexPath];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.reuseIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    id object = self.objects[indexPath.row];
-    cell = [self tableView:tableView configureCell:cell withObject:object];
+    
+    cell = [self tableView:tableView configureCell:cell withObject:object atIndexPath:indexPath];
 
     return cell;
 }
 
-- (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withObject:(id)object
+- (NSString*) cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id object = [self objectForIndexPath:indexPath];
+    NSString *cellIdentifier = @"";
+    
+    if (object) {
+        cellIdentifier = NSStringFromClass([object class]);
+    }
+    
+    return cellIdentifier;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withObject:(id)object atIndexPath:(NSIndexPath *)indexPath
 {
     NSAssert([self respondsToSelector:_cmd],@"Must Override!");
     
     return nil;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

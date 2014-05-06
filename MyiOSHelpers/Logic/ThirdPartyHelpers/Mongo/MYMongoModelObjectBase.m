@@ -10,4 +10,10 @@
 
 @implementation MYMongoModelObjectBase
 
+- (NSString*) description
+{
+    NSString *superDescription = [super description];
+    return [NSString stringWithFormat:@"%@:[_id:%@]",superDescription,self._id];
+}
+
 @end

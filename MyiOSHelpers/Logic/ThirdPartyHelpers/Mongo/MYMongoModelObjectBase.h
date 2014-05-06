@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MYModelObjectBase.h"
+#import "NSArray+PluckMongoIds.h"
 
 @interface MYMongoModelObjectBase : MYModelObjectBase
 

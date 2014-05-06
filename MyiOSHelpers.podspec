@@ -77,7 +77,9 @@ Pod::Spec.new do |spec|
 			third_party.subspec "MongoDB" do |mongo|
 				mongo.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Mongo/*.{h,m}'
 				mongo.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping'
+                mongo.prefix_header_contents = '#import "Underscore.h"', '#ifndef _', '#define _ Underscore', '#endif'
 				mongo.ios.dependency 'NSObject-ObjectMap', '~>2.2'
+                mongo.ios.dependency  'Underscore.m', '~>0.2.1'
 			end
 			
 			third_party.subspec "KeyValueObjectMapping" do |kvom|

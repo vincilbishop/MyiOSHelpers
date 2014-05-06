@@ -10,13 +10,20 @@
 
 @interface MYTableViewControllerBase : UITableViewController
 
-@property (nonatomic,strong) NSArray *objects;
+@property (nonatomic,strong) NSMutableArray *objects;
 @property (nonatomic,strong) NSString *reuseIdentifier;
 
 - (void) reloadWithArray:(NSArray*)objects;
+- (void) reloadSection:(NSUInteger)section withArray:(NSArray*)objects;
+- (id) objectForIndexPath:(NSIndexPath*)indexPath;
+- (NSArray*) arrayForSection:(NSUInteger)section;
 
+- (NSString*) cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableViewCell *) tableView:(UITableView *)tableView configureCellAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withObject:(id)object atIndexPath:(NSIndexPath *)indexPath;
 
-- (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withObject:(id)object;
+- (id) selectedObject;
+- (NSArray*) selectedObjects;
+
 
 @end

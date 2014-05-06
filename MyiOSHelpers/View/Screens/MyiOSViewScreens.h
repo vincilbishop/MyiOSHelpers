@@ -17,3 +17,4 @@
 #import "MYLoginViewControllerBase.h"
 #import "MYTableViewControllerBase.h"
 #import "MYModelObjectTableViewControllerBase.h"
+#import "MYModelObjectViewControllerBase.h"

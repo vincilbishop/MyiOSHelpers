@@ -14,11 +14,16 @@
 @interface MYModelObjectTableViewControllerBase : MYTableViewControllerBase
 
 @property (nonatomic) Class<MYParseableModelObject> modelClass;
+@property (nonatomic,strong) NSMutableArray *modelClassNames;
 
-- (NSArray*) modelObjects;
 
 - (void) reloadWithDictionaries:(NSArray*)objectDictionaries;
+- (void) reloadSection:(NSUInteger)section withDictionaries:(NSArray*)objectDictionaries;
 
-- (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withModelObject:(MYModelObjectBase*)object;
+- (UITableViewCell *) tableView:(UITableView *)tableView configureCell:(UITableViewCell*)cell withModelObject:(MYModelObjectBase*)object atIndexPath:(NSIndexPath *)indexPath;
+
+- (id) selectedObject;
+- (NSArray*) selectedObjects;
+
 
 @end

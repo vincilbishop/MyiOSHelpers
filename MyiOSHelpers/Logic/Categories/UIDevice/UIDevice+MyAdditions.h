@@ -11,5 +11,6 @@
 @interface UIDevice (MyAdditions)
 
 - (BOOL) isSimulator;
+- (BOOL) isDebug;
 
 @end

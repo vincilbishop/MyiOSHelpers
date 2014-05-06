@@ -19,4 +19,14 @@
     return isSimulator;
 }
 
+- (BOOL) isDebug
+{
+    BOOL isDebug = NO;
+#ifdef DEBUG
+    isDebug = YES;
+#endif
+    return isDebug;
+}
+
+
 @end

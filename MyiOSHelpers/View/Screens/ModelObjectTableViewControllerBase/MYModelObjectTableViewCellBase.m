@@ -8,6 +8,7 @@
 
 #import "MYModelObjectTableViewCellBase.h"
 #import "MYModelObjectBase.h"
+#import "MYModelObjectTableViewControllerBase.h"
 
 @implementation MYModelObjectTableViewCellBase
 
