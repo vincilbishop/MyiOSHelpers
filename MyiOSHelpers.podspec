@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     
 	spec.name		= 'MyiOSHelpers'
-	spec.version	= '0.0.2'
+	spec.version	= '0.0.3'
 	spec.homepage   = "http://github.com/premosystems/MyiOSHelpers"
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
@@ -102,85 +102,6 @@ Pod::Spec.new do |spec|
 				twilio.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
 				twilio.dependency 'TwilioSDK', '1.1.2'
 			end
-		end
-	end
-	
-	spec.subspec "View" do |view|
-		view.source_files = 'MyiOSHelpers/View/*.{h,m}'
-		
-		view.subspec "Screens" do |screens|
-			screens.source_files = 'MyiOSHelpers/View/Screens/*.{h,m}'
-            
-			screens.subspec "Drawers" do |drawers|
-				drawers.prefix_header_contents = 	'#import "MMDrawerController.h"',
-                '#import "MMDrawerBarButtonItem.h"',
-                '#import "UIViewController+MMDrawerController.h"'
-				drawers.source_files = 'MyiOSHelpers/View/Screens/Drawers/*.{h,m}'
-				drawers.ios.dependency 'MMDrawerController', '~> 0.5.2'
-			end
-            
-            screens.subspec "ImagePicker" do |imagePicker|
-				imagePicker.source_files = 'MyiOSHelpers/View/Screens/ImagePicker/*.{h,m}'
-                imagePicker.ios.dependency 'UIActionSheet+Blocks'
-                imagePicker.ios.dependency 'MyiOSHelpers/Logic/Categories'
-			end
-			
-			screens.subspec "FormViewController" do |form|
-				form.source_files = 'MyiOSHelpers/View/Screens/FormViewController/*.{h,m}'
-				form.ios.dependency 'RDVKeyboardAvoiding', '~>1.1.0'
-				form.ios.dependency 'US2FormValidator', '~> 1.1.2'
-				form.ios.dependency 'MyiOSHelpers/Logic/Blocks'
-				form.ios.dependency 'MyiOSHelpers/View/Categories'
-			end
-			
-			screens.subspec "LoginViewController" do |login|
-				login.source_files = 'MyiOSHelpers/View/Screens/LoginViewController/*.{h,m}'
-				login.ios.dependency 'MyiOSHelpers/View/Screens/FormViewController'
-				login.ios.dependency 'MBProgressHUD', '~>0.8'
-            end
-            
-            screens.subspec "TableViewControllerBase" do |table|
-				table.source_files = 'MyiOSHelpers/View/Screens/TableViewControllerBase/*.{h,m}'
-            end
-            
-            screens.subspec "ModelObjectTableViewControllerBase" do |modeltable|
-            	modeltable.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping'
-                modeltable.ios.dependency 'MyiOSHelpers/View/Screens/TableViewControllerBase'
-				modeltable.source_files = 'MyiOSHelpers/View/Screens/ModelObjectTableViewControllerBase/*.{h,m}'
-            end
-            
-		end
-        
-        view.subspec "ThirdPartyHelpers" do |third_party|
-			third_party.source_files = 'MyiOSHelpers/View/ThirdPartyHelpers/*.h'
-            
-            third_party.subspec "MBProgressHUD" do |hud|
-                hud.source_files = 'MyiOSHelpers/View/ThirdPartyHelpers/MBProgressHUD/*.{h,m}'
-                hud.ios.dependency 'MBProgressHUD', '~>0.8'
-            end
-        end
-        
-		view.subspec "Categories" do |view_categories|
-			view_categories.source_files = 'MyiOSHelpers/View/Categories/*.{h,m}'
-            
-            categoriesArray = ["UIView"]
-            
-            for category in categoriesArray
-                view_categories.subspec category do |cat|
-                    cat.source_files = "MyiOSHelpers/View/Categories/#{category}/*.{h,m}"
-                end
-            end
-            
-            view_categories.subspec "UIImageView" do |uiimageview|
-                uiimageview.source_files = "MyiOSHelpers/View/Categories/UIImageView/*.{h,m}"
-                uiimageview.ios.dependency 'MyiOSHelpers/View/Categories/UIImage'
-            end
-            
-            view_categories.subspec "UIImage" do |uiimage|
-                uiimage.source_files = "MyiOSHelpers/View/Categories/UIImage/*.{h,m}"
-                uiimage.resource = 'MyiOSHelpers/View/Categories/UIImage/*.png'
-
-            end
 		end
 	end
 end
