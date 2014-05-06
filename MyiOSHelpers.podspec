@@ -74,6 +74,12 @@ Pod::Spec.new do |spec|
                 end
             end
             
+            third_party.subspec "KeyValueObjectMapping" do |kvom|
+				kvom.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping/*.{h,m}'
+				kvom.ios.dependency 'DCKeyValueObjectMapping', '~>1.4.0'
+                kvom.ios.dependency 'NSObject-ObjectMap', '~>2.1'
+            end
+            
 			third_party.subspec "MongoDB" do |mongo|
 				mongo.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Mongo/*.{h,m}'
 				mongo.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping'
@@ -81,12 +87,6 @@ Pod::Spec.new do |spec|
 				mongo.ios.dependency 'NSObject-ObjectMap', '~>2.2'
                 mongo.ios.dependency  'Underscore.m', '~>0.2.1'
 			end
-			
-			third_party.subspec "KeyValueObjectMapping" do |kvom|
-				kvom.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping/*.{h,m}'
-				kvom.ios.dependency 'DCKeyValueObjectMapping', '~>1.4.0'
-                kvom.ios.dependency 'NSObject-ObjectMap', '~>2.1'
-            end
             
             third_party.subspec "CocoaLumberjack" do |lumberjack|
 				lumberjack.ios.dependency 'LumberjackPrettyClassInformation', '~>1.0.0'
