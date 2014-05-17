@@ -15,6 +15,10 @@
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
+    if ([obj superclass] != [NSObject class]) {
+        //dict addEntriesFromDictionary:[NSD]
+    }
+   
     unsigned count;
     objc_property_t *properties = class_copyPropertyList([obj class], &count);
     
@@ -32,7 +36,11 @@
         {
             NSMutableArray *subObj = [NSMutableArray array];
             for (id o in object) {
-                [subObj addObject:[self dictionaryWithPropertiesOfObject:o] ];
+                if ([o isKindOfClass:[NSString class]] || [o isKindOfClass:[NSNumber class]] || [o isKindOfClass:[NSDictionary class]]) {
+                    [subObj addObject:o];
+                } else {
+                    [subObj addObject:[self dictionaryWithPropertiesOfObject:o]];
+                }
             }
             [dict setObject:subObj forKey:key];
         }

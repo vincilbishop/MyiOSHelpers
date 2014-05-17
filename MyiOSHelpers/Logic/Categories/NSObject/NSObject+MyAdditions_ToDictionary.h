@@ -10,6 +10,6 @@
 
 @interface NSObject (MyAdditions_ToDictionary)
 
-- (NSDictionary*) dictionaryRepresentation;
+//- (NSDictionary*) dictionaryRepresentation;
 
 @end

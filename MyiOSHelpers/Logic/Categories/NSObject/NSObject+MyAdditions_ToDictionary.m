@@ -11,10 +11,12 @@
 
 @implementation NSObject (MyAdditions_ToDictionary)
 
+/*
 - (NSDictionary*) dictionaryRepresentation
 {
     NSDictionary *dictionary = [NSDictionary dictionaryWithPropertiesOfObject:self];
     return dictionary;
 }
+ */
 
 @end

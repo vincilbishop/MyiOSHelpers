@@ -96,6 +96,11 @@ Pod::Spec.new do |spec|
 				lumberjack.ios.dependency 'CocoaLumberjack' # , '~>1.8.1'
 			end
             
+            third_party.subspec "ReactiveCocoa" do |reactive|
+				reactive.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/ReactiveCocoa/*.{h,m}'
+                reactive.ios.dependency 'ReactiveCocoa', '~>2.3'
+            end
+            
 			third_party.subspec "Twilio" do |twilio|
 				twilio.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Twilio/*.{h,m}'
 				twilio.prefix_header_contents = '#import "TwilioClient.h"'
