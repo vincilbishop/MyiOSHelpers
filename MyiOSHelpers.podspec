@@ -15,6 +15,8 @@ Pod::Spec.new do |spec|
     
 	spec.source_files = 'MyiOSHelpers/*.{h,m}'
     
+    spec.dependency 'DateTools', '~>1.2.0'
+    
 	spec.subspec "Logic" do |logic|
 		logic.source_files = 'MyiOSHelpers/Logic/*.{h,m}'
      	
