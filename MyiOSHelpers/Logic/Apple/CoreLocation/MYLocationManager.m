@@ -8,6 +8,7 @@
 
 #import "MYLocationManager.h"
 #import "MYiOSLogicCategories.h"
+#import "NSTimer+Blocks.h"
 
 @implementation MYLocationManager
 
@@ -37,7 +38,20 @@ static MYLocationManager *_sharedManager;
 
 #pragma mark - Location Convenience Methods -
 
+- (void) startMonitoringLocationWithUpdateInterval:(NSTimeInterval)updateInterval
+{
+    self.locationTimer = [NSTimer timerWithTimeInterval:updateInterval block:^{
+        [self getLocationAndStopWithCompletion:NULL];
+    } repeats:YES];
+    [self.locationTimer fire];
+}
+
 - (void) getLocationAndStopWithCompletion:(MYCompletionBlock)completionBlock
+{
+    [self getLocationOnce:YES withCompletion:NULL];
+}
+
+- (void) getLocationOnce:(BOOL)once withCompletion:(MYCompletionBlock)completionBlock
 {
     __block id observer = nil;
     observer = [[NSNotificationCenter defaultCenter] addObserverForName:kMYLocationManager_DidUpdateLocations_Notification object:observer queue:[NSOperationQueue backgroundQueue] usingBlock:^(NSNotification *note) {
@@ -50,9 +64,12 @@ static MYLocationManager *_sharedManager;
 
         }
         
-        [[NSOperationQueue backgroundQueue] addOperationWithBlock:^{
-            [self.locationManager stopMonitoringSignificantLocationChanges];
-        }];        
+        if (once) {
+            [[NSOperationQueue backgroundQueue] addOperationWithBlock:^{
+                [self.locationManager stopMonitoringSignificantLocationChanges];
+            }];
+        }
+        
     }];
     
     [self.locationManager startMonitoringSignificantLocationChanges];
@@ -60,16 +77,41 @@ static MYLocationManager *_sharedManager;
 
 #pragma mark - Beacon Convenience Methods -
 
+- (void) startMonitoringBeaconsInRegion:(CLBeaconRegion*)region withUpdateInterval:(NSTimeInterval)updateInterval
+{
+    NSAssert(region,@"Region cannot be nil...");
+    // TODO: We need to figure out how to make this monitor multiple beacon regions...
+    self.beaconTimer = [NSTimer scheduledTimerWithTimeInterval:updateInterval block:^{
+         [self getBeaconsAndStopInRegion:region completion:NULL];
+    } repeats:YES];
+    [self.beaconTimer fire];
+    
+    /*
+    [[NSOperationQueue backgroundQueue] addOperationWithBlock:^{
+        [self.beaconTimer fire];
+    } afterDelay:0.25];
+     */
+    
+}
+
 - (void) getBeaconsAndStopInRegion:(CLBeaconRegion*)region completion:(MYCompletionBlock)completionBlock
 {
+    [self getBeaconsInRegion:region once:YES completion:completionBlock];
+}
+
+- (void) getBeaconsInRegion:(CLBeaconRegion*)region once:(BOOL)once completion:(MYCompletionBlock)completionBlock
+{
+    NSAssert(region,@"Region cannot be nil...");
     __block BOOL found = NO;
     
     __block id observer = nil;
     observer = [[NSNotificationCenter defaultCenter] addObserverForName:kMYLocationManager_DidRangeBeaconsInRegion_Notification object:observer queue:[NSOperationQueue backgroundQueue]  usingBlock:^(NSNotification *note) {
         
-        [[NSOperationQueue backgroundQueue] addOperationWithBlock:^{
-            [self.locationManager stopRangingBeaconsInRegion:region];
-        }];
+        if (once) {
+            [[NSOperationQueue backgroundQueue] addOperationWithBlock:^{
+                [self.locationManager stopRangingBeaconsInRegion:region];
+            }];
+        }
         
         found = YES;
         

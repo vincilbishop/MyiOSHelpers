@@ -29,6 +29,7 @@ Pod::Spec.new do |spec|
 				cl.ios.dependency 'MyiOSHelpers/Logic/Blocks'
 				cl.ios.dependency 'MyiOSHelpers/Logic/Categories'
 				cl.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
+                cl.ios.dependency 'NSTimer-Blocks', '~>0.0.1'
 			end
 			
 			apple.subspec "CoreBluetooth" do |cb|
