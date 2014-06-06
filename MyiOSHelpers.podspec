@@ -91,6 +91,7 @@ Pod::Spec.new do |spec|
             
             third_party.subspec "ReactiveCocoa" do |reactive|
 				reactive.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/ReactiveCocoa/*.{h,m}'
+                reactive.ios.dependency 'MyiOSHelpers/Logic/Blocks'
                 reactive.ios.dependency 'ReactiveCocoa', '~>2.3'
             end
             
