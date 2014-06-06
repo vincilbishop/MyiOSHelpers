@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     
 	spec.name		= 'MyiOSHelpers'
-	spec.version	= '0.0.3'
+	spec.version	= '0.0.4'
 	spec.homepage   = "http://github.com/premosystems/MyiOSHelpers"
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
@@ -66,17 +66,7 @@ Pod::Spec.new do |spec|
         
         logic.subspec "ThirdPartyHelpers" do |third_party|
 			third_party.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/*.h'
-            
-            third_party.subspec "AWS" do |aws|
-                aws.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/AWS/*.{h,m}'
-                aws.subspec "S3" do |s3|
-                    s3.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/AWS/S3/*.{h,m}'
-                    s3.ios.dependency 'AWSiOSSDK/S3', '~>1.7.1'
-                    s3.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
-                    s3.ios.dependency 'MyiOSHelpers/Logic/Blocks'
-                end
-            end
-            
+
             third_party.subspec "KeyValueObjectMapping" do |kvom|
 				kvom.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping/*.{h,m}'
 				kvom.ios.dependency 'DCKeyValueObjectMapping', '~>1.4.0'
@@ -104,12 +94,6 @@ Pod::Spec.new do |spec|
                 reactive.ios.dependency 'ReactiveCocoa', '~>2.3'
             end
             
-			third_party.subspec "Twilio" do |twilio|
-				twilio.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Twilio/*.{h,m}'
-				twilio.prefix_header_contents = '#import "TwilioClient.h"'
-				twilio.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack'
-				twilio.dependency 'TwilioSDK', '1.1.2'
-			end
 		end
 	end
 end
