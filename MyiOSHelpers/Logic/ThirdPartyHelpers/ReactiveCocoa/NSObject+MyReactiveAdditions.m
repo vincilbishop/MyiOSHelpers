@@ -23,9 +23,30 @@
 
 - (void) observeKeyPath:(NSString*)keyPath onChange:(MYCompletionBlock)block once:(BOOL)once
 {
+    __block RACDisposable *disposable = nil;
+    disposable = [[self rac_valuesForKeyPath:keyPath observer:self] subscribeNext:^(id changedObject) {
+       
+        if (changedObject) {
+            if (block) {
+                block(disposable,YES,nil,changedObject);
+            }
+            
+            if (once) {
+                [disposable dispose];
+            }
+        }
+        
+    }];
+}
+
+
+/*
+- (void) observeKeyPath:(NSString*)keyPath onChange:(MYCompletionBlock)block once:(BOOL)once
+{
+    __block id blockSelf = self;
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
-        return [[self rac_valuesForKeyPath:keyPath observer:self] subscribeNext:^(id changedObject) {
+        return [[self rac_valuesForKeyPath:@keypath(blockSelf, [blockSelf objectForKey:keyPath]) observer:blockSelf] subscribeNext:^(id changedObject) {
             
             if (changedObject) {
                 [subscriber sendNext:@[subscriber,changedObject]];
@@ -41,10 +62,9 @@
         
         id<RACSubscriber> subscriber = result[0];
         id changedObject = result[1];
-        if (block) {
-            block(subscriber,YES,nil,changedObject);
-        }
+ 
     }];
 }
+ */
 
 @end

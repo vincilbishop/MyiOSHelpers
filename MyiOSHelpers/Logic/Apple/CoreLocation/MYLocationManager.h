@@ -19,7 +19,7 @@
 @interface MYLocationManager : NSObject<CLLocationManagerDelegate>
 
 @property (nonatomic,strong) NSArray *locations;
-@property (nonatomic,strong) NSDictionary *beacons;
+@property (nonatomic,strong) NSArray *beacons;
 
 @property (nonatomic,strong) CLLocation *mockLocation;
 @property (nonatomic,strong) CLLocationManager *locationManager;
