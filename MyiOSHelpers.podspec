@@ -16,6 +16,10 @@ Pod::Spec.new do |spec|
 	spec.source_files = 'MyiOSHelpers/*.{h,m}'
     
     spec.dependency 'DateTools', '~>1.2.0'
+    spec.dependency 'MTDates', '~>0.12.0'
+    spec.dependency 'Underscore.m', '~>0.2.1'
+    
+    spec.prefix_header_contents = '#import "Underscore.h"', '#ifndef _', '#define _ Underscore', '#endif', '#import "DateTools.h"', '#ifndef MTDATES_NO_PREFIX', '#define MTDATES_NO_PREFIX 1', '#endif', '#import "NSDate+MTDates.h"'
     
 	spec.subspec "Logic" do |logic|
 		logic.source_files = 'MyiOSHelpers/Logic/*.{h,m}'
