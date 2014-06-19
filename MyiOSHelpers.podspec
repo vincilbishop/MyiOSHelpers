@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     
 	spec.name		= 'MyiOSHelpers'
-	spec.version	= '0.0.5'
+	spec.version	= '0.0.4'
 	spec.homepage   = "http://github.com/premosystems/MyiOSHelpers"
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
     
 	spec.source_files = 'MyiOSHelpers/*.{h,m}'
     
-    spec.dependency 'DateTools', '~>1.3.0'
+    spec.dependency 'DateTools' #, '~>1.3.0'
     spec.dependency 'MTDates', '~>0.12.0'
     spec.dependency 'Underscore.m', '~>0.2.1'
     
