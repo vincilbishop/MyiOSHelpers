@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
     
 	spec.source_files = 'MyiOSHelpers/*.{h,m}'
     
-    spec.dependency 'DateTools' #, '~>1.3.0'
+    spec.dependency 'DateTools', '~>1.3.0'
     spec.dependency 'MTDates', '~>0.12.0'
     spec.dependency 'Underscore.m', '~>0.2.1'
     
