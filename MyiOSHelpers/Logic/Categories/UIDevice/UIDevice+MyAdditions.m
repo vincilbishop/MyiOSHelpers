@@ -19,6 +19,7 @@
     return isSimulator;
 }
 
+
 - (BOOL) isDebug
 {
     BOOL isDebug = NO;
@@ -28,5 +29,24 @@
     return isDebug;
 }
 
+
+- (BOOL) isAdHoc
+{
+    BOOL isAdHoc = NO;
+#ifdef ADHOC
+    isDebug = YES;
+#endif
+    return isAdHoc;
+}
+
+
+- (BOOL) isProduction
+{
+    BOOL isProduction = NO;
+#ifdef PRODUCTION
+    isProduction = YES;
+#endif
+    return isProduction;
+}
 
 @end

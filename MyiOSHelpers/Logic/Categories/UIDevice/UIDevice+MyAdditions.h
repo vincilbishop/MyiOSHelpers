@@ -11,6 +11,14 @@
 @interface UIDevice (MyAdditions)
 
 - (BOOL) isSimulator;
+
+// Must define DEBUG=1 preprocessor macro
 - (BOOL) isDebug;
+
+// Must define ADHOC=1 preprocessor macro
+- (BOOL) isAdHoc;
+
+// Must define PRODUCTION=1 preprocessor macro
+- (BOOL) isProduction;
 
 @end
