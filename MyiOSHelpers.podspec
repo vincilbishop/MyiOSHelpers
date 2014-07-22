@@ -54,7 +54,7 @@ Pod::Spec.new do |spec|
             # logic_categories.dependency 'ObjcAssociatedObjectHelpers', '~>1.2.0'
             logic_categories.dependency 'NSDate+Helper', '~>0.0.1'
             
-            categoriesArray = ["NSData","NSDate","NSDictionary","NSError","NSNull","NSOperationQueue","NSRunLoop","NSString","UIApplication","UIDevice"]
+            categoriesArray = ["NSArray","NSData","NSDate","NSDictionary","NSError","NSNull","NSOperationQueue","NSRunLoop","NSString","UIApplication","UIDevice"]
             
             for category in categoriesArray
                 logic_categories.subspec category do |cat|

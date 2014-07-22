@@ -11,6 +11,9 @@
 
 #endif
 
+// NSArray
+#import "NSArray+MyPredicateAdditions.h"
+
 // NSData
 #import "NSData+MyAdditions.h"
 
