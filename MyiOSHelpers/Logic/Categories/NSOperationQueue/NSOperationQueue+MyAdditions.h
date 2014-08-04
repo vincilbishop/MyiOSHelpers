@@ -14,4 +14,6 @@
 
 - (void) addOperationWithBlock:(void (^)(void))block afterDelay:(NSTimeInterval)delay;
 
+- (void) tryOperationWithBlock:(void (^)(void))block successTest:(BOOL (^)(void))successTest repeatCount:(int)repeatCount waitBetweenTries:(NSTimeInterval)waitTime;
+
 @end

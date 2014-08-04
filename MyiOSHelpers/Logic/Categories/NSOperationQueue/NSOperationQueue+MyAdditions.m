@@ -31,4 +31,33 @@ static NSOperationQueue *_myBackgroundOperationQueue;
     });
 }
 
+- (void) tryOperationWithBlock:(void (^)(void))block successTest:(BOOL (^)(void))successTest repeatCount:(int)repeatCount waitBetweenTries:(NSTimeInterval)waitTime
+{
+    for (int i = 0; i < repeatCount; i++) {
+        // Let's try to our success test...
+        if (!successTest()) {
+            
+            DDLogVerbose(@"Success test failed, let's try this again...we have tried this %i times", i + 1);
+            
+            [self addOperationWithBlock:^{
+                @try {
+                    block();
+                }
+                @catch (NSException *exception) {
+                    DDLogVerbose(@"exception when trying operation: %@",exception);
+                }
+                @finally {
+                    //
+                }
+                
+            }];
+            
+            // Wait a second
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:waitTime]];
+            
+        }
+    }
+
+}
+
 @end
