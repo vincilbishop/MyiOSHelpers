@@ -15,4 +15,16 @@
     return [NSDate stringForDisplayFromDate:self];
 }
 
+- (NSTimeInterval) UTCTimeIntervalSince1970 {
+    
+    NSDateComponents *comps = [[NSCalendar currentCalendar]
+                               components:NSDayCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit
+                               fromDate:self];
+    [comps setHour:0];
+    [comps setMinute:0];
+    [comps setSecond:[[NSTimeZone systemTimeZone] secondsFromGMT]];
+    
+    return [[[NSCalendar currentCalendar] dateFromComponents:comps] timeIntervalSince1970];
+}
+
 @end

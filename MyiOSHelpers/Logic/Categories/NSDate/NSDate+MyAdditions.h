@@ -13,4 +13,6 @@
 
 - (NSString*) stringForDisplay;
 
+- (NSTimeInterval) UTCTimeIntervalSince1970;
+
 @end
