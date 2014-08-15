@@ -1,7 +1,6 @@
+#import "CocoaLumberjack.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
-
-#import "DDLog.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 #import "PrettyClassInformationLogFormatter.h"
