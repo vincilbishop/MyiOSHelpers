@@ -1,8 +1,15 @@
 #import "CocoaLumberjack.h"
 #import "DDLog.h"
+
+#import "DDLogMacros.h"
+#import "DDAssertMacros.h"
+
+// Loggers
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
-#import "DDTTYLogger.h"
+#import "DDFileLogger.h"
+
+// Formatterws
 #import "PrettyClassInformationLogFormatter.h"
 
 // ========================= Overrides ========================================
