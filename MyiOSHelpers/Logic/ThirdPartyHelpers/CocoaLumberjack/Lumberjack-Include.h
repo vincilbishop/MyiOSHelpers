@@ -1,4 +1,3 @@
-#import "CocoaLumberjack.h"
 #import "DDLog.h"
 
 #import "DDLogMacros.h"
