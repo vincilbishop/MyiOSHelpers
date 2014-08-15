@@ -39,6 +39,8 @@ Pod::Spec.new do |spec|
 			apple.subspec "CoreBluetooth" do |cb|
 				cb.source_files = 'MyiOSHelpers/Logic/Apple/CoreBluetooth/*.{h,m}'
 				cb.ios.framework = 'CoreBluetooth'
+                cb.prefix_header_contents = 	'#import "Lumberjack-Default-Log-Level.h"',
+                '#import "PrettyClassInformationLogFormatter.h"'
 				cb.ios.dependency 'MyiOSHelpers/Logic/Blocks', spec.version.to_s
 				cb.ios.dependency 'MyiOSHelpers/Logic/Categories', spec.version.to_s
 				cb.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack', spec.version.to_s
@@ -51,7 +53,6 @@ Pod::Spec.new do |spec|
         
 		logic.subspec "Categories" do |logic_categories|
 			logic_categories.source_files = 'MyiOSHelpers/Logic/Categories/*.{h,m}'
-            # logic_categories.dependency 'ObjcAssociatedObjectHelpers', '~>1.2.0'
             logic_categories.dependency 'NSDate+Helper', '~>0.0.1'
             
             categoriesArray = ["NSArray","NSData","NSDate","NSDictionary","NSError","NSNull","NSOperationQueue","NSRunLoop","NSString","UIApplication","UIDevice"]
@@ -59,6 +60,9 @@ Pod::Spec.new do |spec|
             for category in categoriesArray
                 logic_categories.subspec category do |cat|
                     cat.source_files = "MyiOSHelpers/Logic/Categories/#{category}/*.{h,m}"
+                    cat.prefix_header_contents = 	'#import "Lumberjack-Default-Log-Level.h"',
+                    '#import "PrettyClassInformationLogFormatter.h"'
+                    cat.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack', spec.version.to_s
                 end
             end
             
