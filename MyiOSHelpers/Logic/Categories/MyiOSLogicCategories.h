@@ -41,6 +41,7 @@
 
 // NSString
 #import "NSString+MyNilOrEmpty.h"
+#import "NSString+NSURL.h"
 
 // UIApplicatino
 #import "UIApplication+MyAdditions.h"

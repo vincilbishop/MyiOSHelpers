@@ -11,7 +11,7 @@
 
 #endif
 
-
+#import "MyCoreDataHelpers.h"
 #import "CLLocation+MyAdditions.h"
 
 #import "MYLocationManager.h"

@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     
 	spec.name		= 'MyiOSHelpers'
-	spec.version	= '0.1.1'
+	spec.version	= '1.0.0'
 	spec.homepage   = "http://github.com/premosystems/MyiOSHelpers"
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
@@ -26,6 +26,14 @@ Pod::Spec.new do |spec|
      	
         logic.subspec "Apple" do |apple|
 			apple.source_files = 'MyiOSHelpers/Logic/Apple/*.h'
+            
+            apple.subspec "CoreData" do |cd|
+				cd.source_files = 'MyiOSHelpers/Logic/Apple/CoreData/*.{h,m}'
+				cd.ios.framework = 'CoreData'
+				cd.ios.dependency 'MyiOSHelpers/Logic/Blocks', spec.version.to_s
+				cd.ios.dependency 'MyiOSHelpers/Logic/Categories', spec.version.to_s
+                cd.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping', spec.version.to_s
+			end
             
 			apple.subspec "CoreLocation" do |cl|
 				cl.source_files = 'MyiOSHelpers/Logic/Apple/CoreLocation/*.{h,m}'

@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class DCKeyValueObjectMapping;
+#import "DCArrayMapping.h"
+#import "DCKeyValueObjectMapping.h"
+#import "DCParserConfiguration.h"
 
 @protocol MYParseableModelObject <NSObject>
 
++ (DCParserConfiguration*) configuration;
 + (DCKeyValueObjectMapping*) parser;
 
 @end
