@@ -30,6 +30,9 @@
 // NSNull
 #import "NSNull+MyAdditions.h"
 
+// NSNumber
+#import "NSNumber+MyNSDate.h"
+
 // NSObject
 #import "NSObject+MyAdditions_ToDictionary.h"
 
@@ -41,7 +44,8 @@
 
 // NSString
 #import "NSString+MyNilOrEmpty.h"
-#import "NSString+NSURL.h"
+#import "NSString+MyNSURL.h"
+#import "NSString+MyNSDate.h"
 
 // UIApplicatino
 #import "UIApplication+MyAdditions.h"

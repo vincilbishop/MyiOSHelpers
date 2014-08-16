@@ -20,4 +20,9 @@
     return [DCKeyValueObjectMapping mapperForClass:self andConfiguration:[self configuration]];
 }
 
+- (void) updateObjectWithDictionary:(NSDictionary*)values
+{
+    [[[self class] parser] updateObject:self withDictionary:values];
+}
+
 @end

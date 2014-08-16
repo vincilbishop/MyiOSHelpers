@@ -7,10 +7,8 @@
 //
 
 #import <CoreData/CoreData.h>
-#import "DCArrayMapping.h"
-#import "DCKeyValueObjectMapping.h"
-#import "DCParserConfiguration.h"
+#import "MYParseableModelObject.h"
 
-@interface MYManagedObjectBase : NSManagedObject
+@interface MYManagedObjectBase : NSManagedObject<MYParseableModelObject>
 
 @end

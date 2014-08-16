@@ -63,7 +63,7 @@ Pod::Spec.new do |spec|
 			logic_categories.source_files = 'MyiOSHelpers/Logic/Categories/*.{h,m}'
             logic_categories.dependency 'NSDate+Helper', '~>0.0.1'
             
-            categoriesArray = ["NSArray","NSData","NSDate","NSDictionary","NSError","NSNull","NSOperationQueue","NSRunLoop","NSString","UIApplication","UIDevice"]
+            categoriesArray = ["NSArray","NSData","NSDate","NSDictionary","NSError","NSNull","NSNumber","NSOperationQueue","NSRunLoop","NSString","UIApplication","UIDevice"]
             
             for category in categoriesArray
                 logic_categories.subspec category do |cat|
