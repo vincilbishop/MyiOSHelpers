@@ -12,6 +12,7 @@
 #import "DCKeyValueObjectMapping.h"
 #import "DCParserConfiguration.h"
 #import "DCCustomParser.h"
+#import "DCCustomInitialize.h"
 
 @protocol MYParseableModelObject <NSObject>
 
