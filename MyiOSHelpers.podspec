@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     
 	spec.name		= 'MyiOSHelpers'
-	spec.version	= '1.0.1'
+	spec.version	= '1.0.2'
 	spec.homepage   = "http://github.com/premosystems/MyiOSHelpers"
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
@@ -33,6 +33,7 @@ Pod::Spec.new do |spec|
 				cd.ios.dependency 'MyiOSHelpers/Logic/Blocks', spec.version.to_s
 				cd.ios.dependency 'MyiOSHelpers/Logic/Categories', spec.version.to_s
                 cd.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping', spec.version.to_s
+                cd.ios.dependency 'MagicalRecord', '~>2.2'
 			end
             
 			apple.subspec "CoreLocation" do |cl|
