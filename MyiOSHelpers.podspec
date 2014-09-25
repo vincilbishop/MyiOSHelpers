@@ -33,7 +33,7 @@ Pod::Spec.new do |spec|
 				cd.ios.dependency 'MyiOSHelpers/Logic/Blocks', spec.version.to_s
 				cd.ios.dependency 'MyiOSHelpers/Logic/Categories', spec.version.to_s
                 cd.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping', spec.version.to_s
-                cd.ios.dependency 'MagicalRecord', '~>2.2'
+                cd.ios.dependency 'MagicalRecord', '~> 2.2.0'
 			end
             
 			apple.subspec "CoreLocation" do |cl|
@@ -42,8 +42,8 @@ Pod::Spec.new do |spec|
 				cl.ios.dependency 'MyiOSHelpers/Logic/Blocks', spec.version.to_s
 				cl.ios.dependency 'MyiOSHelpers/Logic/Categories', spec.version.to_s
 				cl.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack', spec.version.to_s
-                cl.ios.dependency 'NSTimer-Blocks', '~>0.0.1'
-			end
+                cl.ios.dependency 'NSTimer-Blocks', '~> 0.0.1'
+			end 
 			
 			apple.subspec "CoreBluetooth" do |cb|
 				cb.source_files = 'MyiOSHelpers/Logic/Apple/CoreBluetooth/*.{h,m}'
@@ -62,7 +62,7 @@ Pod::Spec.new do |spec|
         
 		logic.subspec "Categories" do |logic_categories|
 			logic_categories.source_files = 'MyiOSHelpers/Logic/Categories/*.{h,m}'
-            logic_categories.dependency 'NSDate+Helper', '~>0.0.1'
+            logic_categories.dependency 'NSDate+Helper', '~> 0.0.1'
             
             categoriesArray = ["NSArray","NSData","NSDate","NSDictionary","NSError","NSNull","NSNumber","NSOperationQueue","NSRunLoop","NSString","UIApplication","UIDevice"]
             
@@ -86,21 +86,21 @@ Pod::Spec.new do |spec|
 
             third_party.subspec "KeyValueObjectMapping" do |kvom|
 				kvom.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping/*.{h,m}'
-				kvom.ios.dependency 'DCKeyValueObjectMapping', '~>1.4'
-                kvom.ios.dependency 'NSObject-ObjectMap', '~>2.1'
+				kvom.ios.dependency 'DCKeyValueObjectMapping', '~> 1.4.0'
+                kvom.ios.dependency 'NSObject-ObjectMap', '~> 2.1.0'
             end
             
 			third_party.subspec "MongoDB" do |mongo|
 				mongo.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Mongo/*.{h,m}'
 				mongo.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping'
                 mongo.prefix_header_contents = '#import "Underscore.h"', '#ifndef _', '#define _ Underscore', '#endif'
-				mongo.ios.dependency 'NSObject-ObjectMap', '~>2.2'
-                mongo.ios.dependency  'Underscore.m', '~>0.2.1'
+				mongo.ios.dependency 'NSObject-ObjectMap', '~> 2.2.0'
+                mongo.ios.dependency  'Underscore.m', '~> 0.2.1'
 			end
             
             third_party.subspec "CocoaLumberjack" do |lumberjack|
             	lumberjack.ios.dependency 'CocoaLumberjack' # , '~>1.8.1'
-				lumberjack.ios.dependency 'LumberjackPrettyClassInformation', '~>1.0'
+				lumberjack.ios.dependency 'LumberjackPrettyClassInformation', '~> 1.0.0'
 				lumberjack.prefix_header_contents = 	'#import "Lumberjack-Default-Log-Level.h"',
                 '#import "PrettyClassInformationLogFormatter.h"'
 				lumberjack.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack/*.{h,m}'
@@ -110,7 +110,7 @@ Pod::Spec.new do |spec|
             third_party.subspec "ReactiveCocoa" do |reactive|
 				reactive.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/ReactiveCocoa/*.{h,m}'
                 reactive.ios.dependency 'MyiOSHelpers/Logic/Blocks', spec.version.to_s
-                reactive.ios.dependency 'ReactiveCocoa', '~>2.3'
+                reactive.ios.dependency 'ReactiveCocoa', '~> 2.3.0'
             end
             
 		end
