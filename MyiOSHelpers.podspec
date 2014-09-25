@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     
 	spec.name		= 'MyiOSHelpers'
-	spec.version	= '1.0.2'
+	spec.version	= '1.0.3'
 	spec.homepage   = "http://github.com/premosystems/MyiOSHelpers"
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
@@ -15,9 +15,9 @@ Pod::Spec.new do |spec|
     
 	spec.source_files = 'MyiOSHelpers/*.{h,m}'
     
-    spec.dependency 'DateTools', '~>1.3'
-    spec.dependency 'MTDates', '~>0.12'
-    spec.dependency 'Underscore.m', '~>0.2'
+    spec.dependency 'DateTools', '~> 1.3.0'
+    spec.dependency 'MTDates', '~> 0.13.0'
+    spec.dependency 'Underscore.m', '~> 0.2.1'
     
     spec.prefix_header_contents = '#import "Underscore.h"', '#ifndef _', '#define _ Underscore', '#endif', '#import "DateTools.h"', '#ifndef MTDATES_NO_PREFIX', '#define MTDATES_NO_PREFIX 1', '#endif', '#import "NSDate+MTDates.h"'
     
