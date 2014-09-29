@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     
 	spec.name		= 'MyiOSHelpers'
-	spec.version	= '1.0.3'
+	spec.version	= '1.0.4'
 	spec.homepage   = "http://github.com/premosystems/MyiOSHelpers"
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
@@ -15,11 +15,11 @@ Pod::Spec.new do |spec|
     
 	spec.source_files = 'MyiOSHelpers/*.{h,m}'
     
-    spec.dependency 'DateTools', '~> 1.3.0'
-    spec.dependency 'MTDates', '~> 0.13.0'
-    spec.dependency 'Underscore.m', '~> 0.2.1'
+    #spec.dependency 'DateTools', '~> 1.3.0'
+    #spec.dependency 'MTDates', '~> 0.13.0'
+    #spec.dependency 'Underscore.m', '~> 0.2.1'
     
-    spec.prefix_header_contents = '#import "Underscore.h"', '#ifndef _', '#define _ Underscore', '#endif', '#import "DateTools.h"', '#ifndef MTDATES_NO_PREFIX', '#define MTDATES_NO_PREFIX 1', '#endif', '#import "NSDate+MTDates.h"'
+    # spec.prefix_header_contents = '#import "Underscore.h"', '#ifndef _', '#define _ Underscore', '#endif', '#import "DateTools.h"', '#ifndef MTDATES_NO_PREFIX', '#define MTDATES_NO_PREFIX 1', '#endif', '#import "NSDate+MTDates.h"'
     
 	spec.subspec "Logic" do |logic|
 		logic.source_files = 'MyiOSHelpers/Logic/*.{h,m}'
@@ -87,14 +87,14 @@ Pod::Spec.new do |spec|
             third_party.subspec "KeyValueObjectMapping" do |kvom|
 				kvom.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping/*.{h,m}'
 				kvom.ios.dependency 'DCKeyValueObjectMapping', '~> 1.4.0'
-                kvom.ios.dependency 'NSObject-ObjectMap', '~> 2.1.0'
+                kvom.ios.dependency 'NSObject-ObjectMap', '~> 2.3.1'
             end
             
 			third_party.subspec "MongoDB" do |mongo|
 				mongo.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/Mongo/*.{h,m}'
 				mongo.ios.dependency 'MyiOSHelpers/Logic/ThirdPartyHelpers/KeyValueObjectMapping'
                 mongo.prefix_header_contents = '#import "Underscore.h"', '#ifndef _', '#define _ Underscore', '#endif'
-				mongo.ios.dependency 'NSObject-ObjectMap', '~> 2.2.0'
+				mongo.ios.dependency 'NSObject-ObjectMap', '~> 2.3.1'
                 mongo.ios.dependency  'Underscore.m', '~> 0.2.1'
 			end
             
