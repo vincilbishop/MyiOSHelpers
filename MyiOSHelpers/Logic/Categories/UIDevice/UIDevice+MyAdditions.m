@@ -34,7 +34,7 @@
 {
     BOOL isAdHoc = NO;
 #ifdef ADHOC
-    isDebug = YES;
+    isAdHoc = YES;
 #endif
     return isAdHoc;
 }
