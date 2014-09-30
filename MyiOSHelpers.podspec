@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     
 	spec.name		= 'MyiOSHelpers'
-	spec.version	= '1.0.4'
+	spec.version	= '1.0.5'
 	spec.homepage   = "http://github.com/premosystems/MyiOSHelpers"
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
