@@ -6,6 +6,7 @@ Pod::Spec.new do |spec|
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
 	spec.summary	= 'A collection of often used but time consuming to recreate logic for iOS.'
+	s.description  = 'A collection of often used but very time consuming to recreate logic for iOS.'
 	spec.source	= { :git => 'https://github.com/premosystems/MyiOSHelpers.git', :tag => spec.version.to_s }
 	spec.requires_arc = true
     
@@ -99,8 +100,7 @@ Pod::Spec.new do |spec|
 			end
             
             third_party.subspec "CocoaLumberjack" do |lumberjack|
-            	lumberjack.ios.dependency 'CocoaLumberjack', '~>1.8.0'
-				lumberjack.ios.dependency 'LumberjackPrettyClassInformation', '~> 1.0.0'
+				lumberjack.ios.dependency 'LumberjackPrettyClassInformation', '~>1.1.0'
 				lumberjack.prefix_header_contents = 	'#import "Lumberjack-Default-Log-Level.h"',
                 '#import "PrettyClassInformationLogFormatter.h"'
 				lumberjack.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/CocoaLumberjack/*.{h,m}'
@@ -110,7 +110,7 @@ Pod::Spec.new do |spec|
             third_party.subspec "ReactiveCocoa" do |reactive|
 				reactive.source_files = 'MyiOSHelpers/Logic/ThirdPartyHelpers/ReactiveCocoa/*.{h,m}'
                 reactive.ios.dependency 'MyiOSHelpers/Logic/Blocks', spec.version.to_s
-                reactive.ios.dependency 'ReactiveCocoa', '~> 2.3.0'
+                reactive.ios.dependency 'ReactiveCocoa', '~>2.3.0'
             end
             
 		end
