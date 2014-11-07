@@ -6,7 +6,8 @@ Pod::Spec.new do |spec|
 	spec.author     = { "Vincil Bishop" => "vincil.bishop@vbishop.com" }
 	spec.license	= 'MIT'
 	spec.summary	= 'A collection of often used but time consuming to recreate logic for iOS.'
-	s.description  = 'A collection of often used but very time consuming to recreate logic for iOS.'
+	spec.description  = 'collection of often used but very time consuming to recreate logic for iOS.'
+	
 	spec.source	= { :git => 'https://github.com/premosystems/MyiOSHelpers.git', :tag => spec.version.to_s }
 	spec.requires_arc = true
     
