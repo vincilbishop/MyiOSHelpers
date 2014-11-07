@@ -99,7 +99,7 @@ Pod::Spec.new do |spec|
 			end
             
             third_party.subspec "CocoaLumberjack" do |lumberjack|
-            	lumberjack.ios.dependency 'CocoaLumberjack', '~>1.9.2'
+            	lumberjack.ios.dependency 'CocoaLumberjack', '~>1.8.0'
 				lumberjack.ios.dependency 'LumberjackPrettyClassInformation', '~> 1.0.0'
 				lumberjack.prefix_header_contents = 	'#import "Lumberjack-Default-Log-Level.h"',
                 '#import "PrettyClassInformationLogFormatter.h"'
